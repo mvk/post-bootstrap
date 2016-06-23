@@ -2,17 +2,9 @@
 #set -o xtrace
 #set -o errexit
 
-packages=(
-    "build-essential"
-    "libffi-dev"
-    "libssl-dev"
-    "virtualenvwrapper"
-    "python-dev"
-    "vim"
-    "git-core"
-)
+os_packages=($(cat os-requirements.txt))
 # packages
-sudo apt-get install "${packages[@]}"
+sudo apt-get install "${os_packages[@]}"
 
 git_config_items=(
     "color.branch"
