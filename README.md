@@ -25,4 +25,5 @@ Usage
 
 1. Inspect the contents of `*.txt` files and verify it matches your need
 2. As a regular user run:
+      
       bash -li ./setup.sh
