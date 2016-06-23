@@ -88,13 +88,7 @@ install_pathogen_packages(){
         git clone "${src}" "${dst}"
     done
     # enable pathogen and use packages:
-    cat > ~/.vimrc << _EOF
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-
-set tabstop=4 shiftwidth=4 expandtab
-
+    cat >> ~/.vimrc << _EOF
 map <silent> <F3> :set invnumber<cr>
 map <silent> <F4> :NERDTreeToggle<CR>
 
