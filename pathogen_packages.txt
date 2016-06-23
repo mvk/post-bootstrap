@@ -1,3 +1,4 @@
 scrooloose/nerdtree.git
 scrooloose/syntastic.git
-erikzaadi/vim-ansible-yaml
+erikzaadi/vim-ansible-yaml.git
+Lokaltog/vim-powerline.git
