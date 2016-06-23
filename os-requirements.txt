@@ -1,0 +1,7 @@
+build-essential
+libffi-dev
+libssl-dev
+virtualenvwrapper
+python-dev
+vim
+git-core
