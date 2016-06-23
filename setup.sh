@@ -38,9 +38,15 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 
 source "${HOME}/.bashrc"
 
-ve="ansible-prod"
-lsvirtualenv -b | grep -E "${ve}" &> /dev/null && rmvirtualenv "${ve}"
-mkvirtualenv "${ve}"
+[[ -r requirements.txt ]] || {
+    echo "cannot run without requirements.txt present in $PWD";
+    exit 1;
+}
+ve="$( sha1sum requirements.txt | cut -d' ' -f1)"
+if ! [[ -d "${WORKON_HOME}/${ve}" ]]; then
+    mkvirtualenv "${ve}"
+fi
 workon "${ve}"
+echo "Using virtualenv: ${ve}"
 
 pip install -r ./requirements.txt
