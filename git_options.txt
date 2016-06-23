@@ -1,0 +1,7 @@
+color.branch=true
+color.diff=true
+color.grep=true
+color.interactive=true
+color.pager=true
+color.status=true
+core.editor=/usr/bin/vim
