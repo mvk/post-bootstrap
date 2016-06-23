@@ -1,2 +1,3 @@
 scrooloose/nerdtree.git
 scrooloose/syntastic.git
+erikzaadi/vim-ansible-yaml
