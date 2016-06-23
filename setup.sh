@@ -35,6 +35,34 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 ! [[ -r "${HOME}/.vim/autoload/pathogen.vim" ]] \
 && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
+pathogen_packages=(
+    "scrooloose/nerdtree.git"
+    "scrooloose/syntastic.git"
+)
+
+for repo_suffix in "${pathogen_packages[@]}"; do
+    repo="${repo_suffix##*/}"
+    repo="${repo%.*}"
+    src="https://github.com/${repo_suffix}"
+    dst="${HOME}/.vim/bundle/${repo}"
+    if [[ -d "${dst}" ]]; then
+        continue
+    fi
+    git clone "${src}" "${dst}"
+done
+
+cat > ~/.vimrc << _EOF
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+set tabstop=4 shiftwidth=4 expandtab
+
+map <silent> <F3> :set invnumber<cr>
+map <silent> <F4> :NERDTreeToggle<CR>
+
+_EOF
+
 
 source "${HOME}/.bashrc"
 
@@ -44,9 +72,7 @@ source "${HOME}/.bashrc"
 }
 ve="$( sha1sum requirements.txt | cut -d' ' -f1)"
 if ! [[ -d "${WORKON_HOME}/${ve}" ]]; then
-    mkvirtualenv "${ve}"
+    mkvirtualenv "${ve}" -r "./requirements.txt"
 fi
 workon "${ve}"
 echo "Using virtualenv: ${ve}"
-
-pip install -r ./requirements.txt

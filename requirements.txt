@@ -1,4 +1,5 @@
 pip
+setuptools>=11.3
 ndg-httpsclient
 botocore==1.4.1
 boto==2.40.0
