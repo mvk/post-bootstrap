@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
-set -o xtrace
-set -o errexit
+#set -o xtrace
+#set -o errexit
 
 packages=(
     "build-essential"
@@ -38,7 +37,10 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle
 
 
 source "${HOME}/.bashrc"
-lsvirtualenv -b | grep -E "ansible-prod" &> /dev/null \
-|| mkvirtualenv ansible-prod
+
+ve="ansible-prod"
+lsvirtualenv -b | grep -E "${ve}" &> /dev/null && rmvirtualenv "${ve}"
+mkvirtualenv "${ve}"
+workon "${ve}"
 
 pip install -r ./requirements.txt
