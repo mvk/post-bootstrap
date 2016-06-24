@@ -1,4 +1,6 @@
+jmcantrell/vim-virtualenv.git
 scrooloose/nerdtree.git
 scrooloose/syntastic.git
 erikzaadi/vim-ansible-yaml.git
+Lokaltog/powerline.git
 Lokaltog/vim-powerline.git

@@ -53,9 +53,9 @@ setup_virtualenv() {
 
 setup_pathogen() {
     # pathogen
-    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    mkdir -p "${HOME}/.vim/autoload" "${HOME}/.vim/bundle"
     ! [[ -r "${HOME}/.vim/autoload/pathogen.vim" ]] \
-    && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    && curl -LSso "${HOME}/.vim/autoload/pathogen.vim" "https://tpo.pe/pathogen.vim"
 
     if [[ -r "${HOME}/.vimrc" ]]; then
         mv "${HOME}/.vimrc" "${HOME}/.vimrc.$(date +%s)"
@@ -94,9 +94,10 @@ map <silent> <F3> :set invnumber<cr>
 map <silent> <F4> :NERDTreeToggle<CR>
 
 " setup powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 _EOF2
 
 }
